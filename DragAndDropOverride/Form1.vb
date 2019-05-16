@@ -6,26 +6,51 @@ Imports CefSharp
 Imports CefSharp.Enums
 Imports CefSharp.WinForms
 Imports CefSharp.WinForms.Internals
-Imports WindowsApplication2
-Imports WindowsApplication2.Browser
-Imports WindowsApplication2.iwantedue.Windows.Forms
+Imports DragAndDropOverride
+Imports DragAndDropOverride.Browser
 
-Public Class DragHandler
-    Implements IDragHandler
-
-    Public Sub OnDraggableRegionsChanged(chromiumWebBrowser As IWebBrowser, browser As IBrowser, regions As IList(Of DraggableRegion)) Implements IDragHandler.OnDraggableRegionsChanged
-        Throw New NotImplementedException()
-    End Sub
-
-    Public Function OnDragEnter(chromiumWebBrowser As IWebBrowser, browser As IBrowser, dragData As IDragData, mask As DragOperationsMask) As Boolean Implements IDragHandler.OnDragEnter
-        ' MsgBox("Test")
-        Dim DataObject As OutlookDataObject = New OutlookDataObject(CType(CType(dragData, IDataObject), System.Windows.Forms.IDataObject))
-        Return False
-    End Function
-End Class
 
 Public Class Form1
 
+    Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
+
+        If Win32API.TryFindHandl(ChromiumWebBrowser1.Handle, outparam) Then
+            Debug.WriteLine("Handle Removed")
+            NativeMethodsEx.RegisterDragDrop(outparam, New DragAndDrop)
+        End If
+        Exit Sub
+        ' clear list
+        hWndList.Clear()
+        ' enum windows, find classname "CabinetWClass", add handles to list
+        EnumWindows(AddressOf ClassesByName, IntPtr.Zero)
+        ' display list contents (window handles).
+        If hWndList.Count = 0 Then
+            MessageBox.Show("None found, list is empty!")
+        Else
+            For Each hWnd In hWndList
+                Debug.WriteLine(hWnd)
+            Next
+        End If
+    End Sub
+
+    Private hWndList As New List(Of IntPtr)
+    ' API Stuff...
+    Private Declare Function GetClassName Lib "user32" Alias "GetClassNameA" (ByVal hwnd As IntPtr, ByVal lpClassName As StringBuilder, ByVal nMaxCount As Int32) As Int32
+    Private Declare Function EnumWindows Lib "user32" (ByVal lpEnumFunc As EnumWindowsProcDelegate, ByVal lParam As IntPtr) As Boolean
+    Private Delegate Function EnumWindowsProcDelegate(ByVal hWnd As IntPtr, ByVal lParam As IntPtr) As Boolean
+
+    Private Function ClassesByName(ByVal hWnd As IntPtr, ByVal lParam As IntPtr) As Boolean
+        If Get_ClassName(hWnd) = Win32API.Chrome_WidgetWin Then ' "CabinetWClass", used in Win7 Explorer windows.
+            hWndList.Add(hWnd)
+        End If
+        Return True
+    End Function
+
+    Private Function Get_ClassName(ByVal hWnd As IntPtr) As String
+        Dim sb As New StringBuilder(256)
+        GetClassName(hWnd, sb, 256)
+        Return sb.ToString
+    End Function
 
     Public Property MBrowser As IWinFormsWebBrowser
 
@@ -60,11 +85,7 @@ Public Class Form1
 
 
 
-        Dim outparam As IntPtr
-        If Win32API.TryFindHandl(ChromiumWebBrowser1.Handle, outparam) Then
-            Debug.WriteLine("Handle Removed")
-            NativeMethodsEx.RegisterDragDrop(Me.Handle, New DragAndDrop)
-        End If
+
 
 
 
@@ -147,7 +168,6 @@ Public Class Form1
         End If
         MBrowser.Load(TextBox1.Text)
     End Sub
-
 
 
 End Class

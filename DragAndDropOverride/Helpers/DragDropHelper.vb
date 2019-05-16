@@ -12,8 +12,8 @@ Namespace Browser
     End Structure
 
     Module Win32API
-        Const Chrome_WidgetWin As String = "Chrome_WidgetWin_0"
-
+        Public Const Chrome_WidgetWin As String = "Chrome_WidgetWin_0"
+        Public outparam As IntPtr
         Public Function TryFindHandl(ByVal browserHandle As IntPtr, <Out> ByRef chromeWidgetHostHandle As IntPtr) As Boolean
 
             Dim cbXL As New NativeMethodsEx.EnumChildCallback(AddressOf EnumChildProc_Browser)
@@ -30,7 +30,7 @@ Namespace Browser
             Dim ret = NativeMethodsEx.RevokeDragDrop(hwndChild)
 
             If ret = NativeMethodsEx.DRAGDROP_E_NOTREGISTERED Then
-                Debug.Print("No Drag and Drop Registered")
+                Debug.WriteLine("No Drag and Drop Registered")
             End If
 
             If buf.ToString = Chrome_WidgetWin Then

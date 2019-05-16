@@ -7,8 +7,7 @@ Imports System.Text
 Imports System.Reflection
 Imports System.Windows.Forms
 
-Namespace iwantedue.Windows.Forms
-    Public Class OutlookDataObject
+Public Class OutlookDataObject
         Implements System.Windows.Forms.IDataObject
 
         Private Class NativeMethods
@@ -357,4 +356,3 @@ Namespace iwantedue.Windows.Forms
         End Sub
     End Class
 #End Region
-End Namespace
