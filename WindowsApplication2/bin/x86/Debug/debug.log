@@ -1,0 +1,20 @@
+[0515/141936.049:INFO:CONSOLE(2)] "Refused to apply inline style because it violates the following Content Security Policy directive: "default-src 'self'". Either the 'unsafe-inline' keyword, a hash ('sha256-nOc1lSDykjnDQ5TRaAw00eudFWaBc3XaOeqi98U2w9Y='), or a nonce ('nonce-...') is required to enable inline execution. Note also that 'style-src' was not explicitly set, so 'default-src' is used as a fallback.
+", source: http://yashoo.com/ (2)
+[0515/141936.050:INFO:CONSOLE(0)] "Refused to load the image 'http://us.i1.yimg.com/us.yimg.com/i/yahoo.gif' because it violates the following Content Security Policy directive: "default-src 'self'". Note that 'img-src' was not explicitly set, so 'default-src' is used as a fallback.
+", source: http://yashoo.com/ (0)
+[0515/141959.065:INFO:CONSOLE(28)] "AutoDocket loaded!", source: http://autodocket.mstipsolutions.com/autodocket/app/layout/shell.controller.js (28)
+[0515/142029.060:INFO:CONSOLE(13)] "Resource: http://autodocket.mstipsolutions.com/autodocket/API/api/Submission/", source: http://autodocket.mstipsolutions.com/autodocket/app/common/resources/submissionResource.js (13)
+[0515/142029.060:INFO:CONSOLE(13)] "Resource: http://autodocket.mstipsolutions.com/autodocket/API/api/Files/", source: http://autodocket.mstipsolutions.com/autodocket/app/common/resources/fileResource.js (13)
+[0515/142029.065:INFO:CONSOLE(28)] "AutoDocket loaded!", source: http://autodocket.mstipsolutions.com/autodocket/app/layout/shell.controller.js (28)
+[0515/142029.104:INFO:CONSOLE(23)] "AutoDocket: Events loaded!", source: http://autodocket.mstipsolutions.com/autodocket/app/events/events.controller.js (23)
+[0515/142029.145:INFO:CONSOLE(106)] "cases feature loaded!", source: http://autodocket.mstipsolutions.com/autodocket/app/events/cases/cases.controller.js (106)
+[0515/142038.013:INFO:CONSOLE(54)] "data:[object Object],[object Object]", source: http://autodocket.mstipsolutions.com/autodocket/app/events/cases/cases.controller.js (54)
+[0515/142038.023:INFO:CONSOLE(54)] "data:[object Object],[object Object]", source: http://autodocket.mstipsolutions.com/autodocket/app/events/cases/cases.controller.js (54)
+[0515/142047.631:INFO:CONSOLE(24)] "Selected Application: Test-AutoDocket-US-NP loaded!", source: http://autodocket.mstipsolutions.com/autodocket/app/events/apps/selectedAppController.js (24)
+[0515/142048.676:INFO:CONSOLE(181)] "Report feature loaded!", source: http://autodocket.mstipsolutions.com/autodocket/app/events/report/report.controller.js (181)
+[0515/143136.892:WARNING:spdy_session.cc(3180)] Received HEADERS for invalid stream 5
+[0515/143331.534:INFO:CONSOLE(0)] "HTML Imports is deprecated and will be removed in M73, around March 2019. Please use ES modules instead. See https://www.chromestatus.com/features/5144752345317376 for more details.", source:  (0)
+[0515/143605.663:INFO:CONSOLE(0)] "HTML Imports is deprecated and will be removed in M73, around March 2019. Please use ES modules instead. See https://www.chromestatus.com/features/5144752345317376 for more details.", source:  (0)
+[0515/144232.175:INFO:CONSOLE(0)] "HTML Imports is deprecated and will be removed in M73, around March 2019. Please use ES modules instead. See https://www.chromestatus.com/features/5144752345317376 for more details.", source:  (0)
+[0515/145603.873:INFO:CONSOLE(0)] "HTML Imports is deprecated and will be removed in M73, around March 2019. Please use ES modules instead. See https://www.chromestatus.com/features/5144752345317376 for more details.", source:  (0)
+[0515/145916.352:INFO:CONSOLE(0)] "HTML Imports is deprecated and will be removed in M73, around March 2019. Please use ES modules instead. See https://www.chromestatus.com/features/5144752345317376 for more details.", source:  (0)
