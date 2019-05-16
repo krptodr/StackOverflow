@@ -11,14 +11,10 @@ Namespace Browser
         Public y As Integer
     End Structure
 
-
-    <ComImport>
-    <Guid("4657278A-411B-11d2-839A-00C04FD918D0")>
-    Public Class DragDropHelper
-        Implements IDropTargetHelper
+    Module Win32API
         Const Chrome_WidgetWin As String = "Chrome_WidgetWin_0"
 
-        Public Shared Function TryFindHandl(ByVal browserHandle As IntPtr, <Out> ByRef chromeWidgetHostHandle As IntPtr) As Boolean
+        Public Function TryFindHandl(ByVal browserHandle As IntPtr, <Out> ByRef chromeWidgetHostHandle As IntPtr) As Boolean
 
             Dim cbXL As New NativeMethodsEx.EnumChildCallback(AddressOf EnumChildProc_Browser)
             NativeMethodsEx.EnumChildWindows(browserHandle, cbXL, chromeWidgetHostHandle)
@@ -27,8 +23,9 @@ Namespace Browser
 
         End Function
 
-        Public Shared Function EnumChildProc_Browser(ByVal hwndChild As Integer, ByRef lParam As Integer) As Boolean
+        Public Function EnumChildProc_Browser(ByVal hwndChild As Integer, ByRef lParam As Integer) As Boolean
             Dim buf As New StringBuilder(128)
+            'Dim hwndMyWindow As IntPtr = FindWindowEx(NULL, NULL, "mywindowclass", NULL);
             NativeMethodsEx.GetClassName(hwndChild, buf, 128)
             Dim ret = NativeMethodsEx.RevokeDragDrop(hwndChild)
 
@@ -42,6 +39,14 @@ Namespace Browser
             End If
             Return True
         End Function
+    End Module
+
+
+    <ComImport>
+    <Guid("4657278A-411B-11d2-839A-00C04FD918D0")>
+    Public Class DragDropHelper
+        Implements IDropTargetHelper
+
 
         Public Sub DragEnter(<[In]> hwndTarget As IntPtr, <[In]> <MarshalAs(UnmanagedType.Interface)> dataObject As IDataObject_Com, <[In]> ByRef pt As Win32Point, <[In]> effect As Integer) Implements IDropTargetHelper.DragEnter
             Throw New NotImplementedException()

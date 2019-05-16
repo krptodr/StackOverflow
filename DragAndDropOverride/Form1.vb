@@ -43,11 +43,7 @@ Public Class Form1
         MBrowser = ChromiumWebBrowser1
         'Self Register Drag and Drop
         'Dim drag As New DragDropHelper
-        Dim outparam As IntPtr
-        If DragDropHelper.TryFindHandl(ChromiumWebBrowser1.Handle, outparam) Then
-            Debug.WriteLine("Handle Removed")
-            NativeMethodsEx.RegisterDragDrop(Me.Handle, New DragAndDrop)
-        End If
+
         'browser.AllowDrop = True
         'MBrowser.DragHandler = New DragHandler
 
@@ -64,7 +60,11 @@ Public Class Form1
 
 
 
-
+        Dim outparam As IntPtr
+        If Win32API.TryFindHandl(ChromiumWebBrowser1.Handle, outparam) Then
+            Debug.WriteLine("Handle Removed")
+            NativeMethodsEx.RegisterDragDrop(Me.Handle, New DragAndDrop)
+        End If
 
 
 

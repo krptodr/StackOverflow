@@ -15,10 +15,11 @@ Public NotInheritable Class NativeMethodsEx
 
         Friend Delegate Function EnumChildCallback(ByVal hwnd As Integer, ByRef lParam As Integer) As Boolean
 
-        <DllImport("User32.dll")>
-        Friend Shared Function EnumChildWindows(ByVal hWndParent As Integer, ByVal lpEnumFunc As EnumChildCallback, ByRef lParam As Integer) As Boolean
-        End Function
+    Public Declare Function EnumWindows Lib "user32.dll" (ByVal lpEnumFunc As Long, ByVal lParam As Long) As Long
 
+    <DllImport("User32.dll")>
+    Friend Shared Function EnumChildWindows(ByVal hWndParent As Integer, ByVal lpEnumFunc As EnumChildCallback, ByRef lParam As Integer) As Boolean
+    End Function
 
     <DllImport("ole32.dll")>
     Friend Shared Function RegisterDragDrop(ByVal hwnd As IntPtr, DropTarget As IOleDropTarget) As IntPtr
