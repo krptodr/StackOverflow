@@ -1,4 +1,0 @@
-F:\Programming\GitHub\CefSharp\WindowsApplication2\obj\Debug\WindowsApplication2.vbprojResolveAssemblyReference.cache
-F:\Programming\GitHub\CefSharp\WindowsApplication2\obj\Debug\WindowsApplication2.Form1.resources
-F:\Programming\GitHub\CefSharp\WindowsApplication2\obj\Debug\WindowsApplication2.Resources.resources
-F:\Programming\GitHub\CefSharp\WindowsApplication2\obj\Debug\WindowsApplication2.vbproj.GenerateResource.Cache
